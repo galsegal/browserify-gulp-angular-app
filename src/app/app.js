@@ -1,7 +1,8 @@
 /*globals angular*/
 
 var app = angular.module('app', [
-    'ngRoute'
+    'ngRoute',
+    'ngResource'
 ]);
 
 app.config(function($routeProvider) {
@@ -19,4 +20,5 @@ app.config(function($routeProvider) {
 //because comprehending and traversing the browserify-ed commonJS modules is beyond the scope of ng-annotate
 //If this is not done, AngularJs' dependency injection will fail on minified builds
 //See https://docs.angularjs.org/tutorial/step_05#a-note-on-minification
-app.controller('HelloCtrl', require('./hello-ctrl'));
+app.factory('FlickrService', require('./services/flickr-service'));
+app.controller('HelloCtrl', require('./controllers/hello-ctrl'));
