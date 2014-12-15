@@ -1,8 +1,14 @@
-<span class="page hello" ng-controller="HelloCtrl as ctrl">
+<div class="photos-page" ng-controller="HelloCtrl as ctrl">
     <p>Hello: {{ctrl.displayText}}</p>
-    <ul class="links">
-      <li class="link" ng-repeat="link in ctrl.xhrData.parsed">
-        <a href="{{link.url}}">{{link.title}}</a>
-      </li>
+
+    <form ng-submit="ctrl.search()">
+        <input class="tags-input" ng-model="ctrl.tags"/>
+        <input class="search-submit" type="submit" value="go"/>
+    </form>
+    <ul class="photos">
+        <li class="link" ng-repeat="photo in ctrl.photos">
+            <p class="photos-title">{{ photo.title || "(EMPTY)" }}</p>
+            <img ng-src="{{ photo.media.m }}"/>
+        </li>
     </ul>
-</span>
+</div>
